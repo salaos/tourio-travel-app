@@ -41,12 +41,22 @@ export default function Form({ onSubmit, formName, defaultData }) {
         type="text"
         defaultValue={defaultData?.name}
       />
-      <Label htmlFor="image-url">Image Url</Label>
+      <Label htmlFor="image-url">
+        <a
+          href="https://unsplash.com/s/photos/hamburg"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Unsplash Url
+        </a>
+      </Label>
       <Input
         id="image-url"
         name="image"
         type="text"
         defaultValue={defaultData?.image}
+        pattern="https://images.unsplash.com/.*"
+        required
       />
       <Label htmlFor="location">Location</Label>
       <Input

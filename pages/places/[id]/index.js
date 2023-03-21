@@ -1,10 +1,10 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router.js';
-import useSWR from 'swr';
-import styled from 'styled-components';
-import { StyledLink } from '../../../components/StyledLink.js';
-import { StyledButton } from '../../../components/StyledButton.js';
-import { StyledImage } from '../../../components/StyledImage.js';
+import Link from "next/link";
+import { useRouter } from "next/router.js";
+import useSWR from "swr";
+import styled from "styled-components";
+import { StyledLink } from "../../../components/StyledLink.js";
+import { StyledButton } from "../../../components/StyledButton.js";
+import { StyledImage } from "../../../components/StyledImage.js";
 
 const ImageContainer = styled.div`
   position: relative;
@@ -24,8 +24,8 @@ const ButtonContainer = styled.section`
 
 const StyledLocationLink = styled(StyledLink)`
   text-align: center;
-  background-color: white;
-  border: 3px solid lightsalmon;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1px #f0f0f0, 0 1px 5px grey;
 `;
 
 export default function DetailsPage() {
@@ -38,12 +38,17 @@ export default function DetailsPage() {
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
   function deletePlace() {
-    console.log('deleted?');
+    fetch(`/api/places/${id}`, {
+      method: "DELETE",
+    }).then(() => {
+      // add a notification to confirm deletion and redirect to home page.
+      router.push("/");
+    });
   }
 
   return (
     <>
-      <Link href={'/'} passHref legacyBehavior>
+      <Link href={"/"} passHref legacyBehavior>
         <StyledLink justifySelf="start">back</StyledLink>
       </Link>
       <ImageContainer>

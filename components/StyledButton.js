@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const StyledButton = styled.button`
-  background-color: lightsalmon;
+  background-color: yellowgreen;
   padding: 0.8rem;
   border-radius: 0.6rem;
   color: black;
@@ -9,6 +9,7 @@ export const StyledButton = styled.button`
   font-weight: bold;
   border: none;
   font-size: inherit;
+  box-shadow: 0 1px 5px lightgrey;
 
   ${({ variant }) =>
     variant === "delete" &&
