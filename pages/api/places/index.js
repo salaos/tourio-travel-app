@@ -34,9 +34,12 @@ export default async function handler(request, response) {
     return response.status(200).json(place);
   }
 
+  // write the delete route
   if (request.method === "DELETE") {
     const { id } = request.body;
     const place = await Place.findByIdAndDelete(id);
     return response.status(200).json(place);
   }
 }
+
+// Deploy your app to Vercel and make sure the deployment can access the cloud database with the help of environment variables.
